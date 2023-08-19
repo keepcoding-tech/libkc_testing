@@ -1,4 +1,4 @@
-[![C/C++ CI](https://github.com/Daniel-Tanase/libkc_testing/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/Daniel-Tanase/libkc_testing/actions/workflows/c-cpp.yml)
+[![C/C++ CI](https://github.com/keepcoding-tech/libkc_testing/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/keepcoding-tech/libkc_testing/actions/workflows/c-cpp.yml)
 
 ```
   _ _ _     _                 _            _   _
