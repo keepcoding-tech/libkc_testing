@@ -10,15 +10,45 @@
 
 #include <stdlib.h>
 
-/* MARK: PUBLIC MEMBER METHODS PROTOTYPES */
-void ok(bool condition);
+//--- MARK: PRIVATE FUNCTION PROTOTYPES -------------------------------------//
 
-/* MARK: PUBLIC MEMBER METHODS DEFINITIONS */
+bool check_ok(bool condition);
+void check_skip(bool condition);
 
-// This functinos is a costumized 'assert' functino for the library
-void ok(bool condition) {
-  if (!condition) {
-    fprintf(stderr, "not ok ..\n");
-    exit(1);
+//---------------------------------------------------------------------------//
+
+int passed = 0;
+int failed = 0;
+int skiped = 0;
+
+bool skiping = false;
+
+//---------------------------------------------------------------------------//
+
+bool check_ok(bool condition)
+{
+  if (condition == false)
+  {
+    // increment the number of failed tests
+    ++failed;
+    return false;
+  }
+  
+  // increment the number of passed tests
+  ++passed;
+  return true;
+}
+
+//---------------------------------------------------------------------------//
+
+void check_skip(bool condition)
+{
+  if (condition == true)
+  {
+    // increment the number of skiped tests
+    ++skiped;
+    skiping = true;
   }
 }
+
+//---------------------------------------------------------------------------//
