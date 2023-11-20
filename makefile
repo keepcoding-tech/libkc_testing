@@ -1,4 +1,4 @@
-# This file is part of libkc_testing
+# This file is part of libkc_datastructs
 # ==================================
 #
 # makefile
@@ -47,7 +47,7 @@ STATIC_LIBS := $(foreach dir, $(STATIC_LIB_DIRS), $(wildcard $(dir)/*.a))
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Set the default target
-all: install $(OBJECTS) libkc_testing.a
+all: $(OBJECTS) libkc_datastructs.a
 
 # Create the build directory and compile the object files
 $(OBJECTS): | $(OBJ_DIRS)
@@ -59,8 +59,8 @@ $(OBJ_DIRS):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	$(CC) $(STD) $(CFLAGS) -c $< -o $@
 
-libkc_testing.a: $(OBJECTS)
-	ar rcsT libkc_testing.a $(OBJECTS) $(STATIC_LIBS)
+libkc_datastructs.a: $(OBJECTS)
+	ar rcsT libkc_datastructs.a $(OBJECTS) $(STATIC_LIBS)
 
 ################################### INSTALL ####################################
 
@@ -89,7 +89,7 @@ TEST_STATIC_LIBS := $(foreach dir, $(STATIC_LIB_DIRS), $(patsubst $(dir)/lib%.a,
 LDFLAGS := $(addprefix -L, $(STATIC_LIB_DIRS)) $(addprefix -l, $(TEST_STATIC_LIBS))
 
 # Test command to run all test executables consecutively
-test: install $(TEST_TARGETS) $(ALL_TESTS)
+test: $(TEST_TARGETS) $(ALL_TESTS)
 	@for test_executable in $(ALL_TESTS); do \
 		$$test_executable; \
 	done
@@ -124,3 +124,4 @@ help:
 	@echo "  test        : Run all test executables consecutively"
 	@echo "  clean       : Clean up the object files and build directory"
 	@echo "  help        : Display this help message"
+
