@@ -22,40 +22,40 @@ extern int skiped;
 
 extern bool skiping;
 
-#define testgroup(description) \
+#define testgroup(description)                                                \
   printf("\n----- FILE > %s %s \n\n", __FILE__, #description);
 
-#define subtest(description)               \
-  printf(" SUBTEST | %s \n", description); \
+#define subtest(description)                                                  \
+  printf(" SUBTEST | %s \n", description);                                    \
  
-#define ok(condition)                                           \
-  if (skiping == true)                                          \
-  {                                                             \
-    skiping = false;                                            \
-    printf("    SKIP | %s \n", #condition);                     \
-  }                                                             \
-  else if (check_ok(condition) == false)                        \
-  {                                                             \
-    printf("    FAIL |- %s \n", #condition);                    \
-    printf("         |- in file %s:%d \n", __FILE__, __LINE__); \
-  }                                                             \
-  else                                                          \
-  {                                                             \
-    printf("    PASS | \n");                                    \
+#define ok(condition)                                                         \
+  if (skiping == true)                                                        \
+  {                                                                           \
+    skiping = false;                                                          \
+    printf("    SKIP | %s \n", #condition);                                   \
+  }                                                                           \
+  else if (check_ok(condition) == false)                                      \
+  {                                                                           \
+    printf("    FAIL |- %s \n", #condition);                                  \
+    printf("         |- in file %s:%d \n", __FILE__, __LINE__);               \
+  }                                                                           \
+  else                                                                        \
+  {                                                                           \
+    printf("    PASS | \n");                                                  \
   }
 
-#define skip(condition) \
+#define skip(condition)                                                       \
   check_skip(condition);
 
-#define note(description) \
+#define note(description)                                                     \
   printf("    NOTE : %s \n", description);
 
-#define done_testing()                                    \
-  printf("\n^^^^^ RSLT > %d FAIL | %d PASS | %d SKIP \n", \
-      failed, passed, skiped);                            \
-  if (failed > 0)                                         \
-  {                                                       \
-    exit(1);                                              \
+#define done_testing()                                                        \
+  printf("\n^^^^^ RSLT > %d FAIL | %d PASS | %d SKIP \n",                     \
+      failed, passed, skiped);                                                \
+  if (failed > 0)                                                             \
+  {                                                                           \
+    exit(1);                                                                  \
   }
 
 #endif /* TEST_H */
