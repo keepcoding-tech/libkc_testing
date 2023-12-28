@@ -12,8 +12,8 @@
 
 //--- MARK: PRIVATE FUNCTION PROTOTYPES -------------------------------------//
 
-bool check_ok(bool condition);
-void check_skip(bool condition);
+bool check_ok    (bool condition);
+void check_skip  (bool condition);
 
 //---------------------------------------------------------------------------//
 
